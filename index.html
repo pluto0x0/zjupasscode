@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://passcode.zju.edu.cn/pass_code/zx?membership=noauto# -->
+
+<title>浙江大学通行码</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="main.css">
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<script src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="jquery.qrcode.min.js"></script>
+<script>setTimeout("location=location; ", (24 * 3600 * 1000) * 3);</script>
+<script>
+    jQuery(function () {
+        var account = '000';
+        if (Cookies.get('name') == '') {
+            $("#fucker").hide();
+        }
+        else {
+            $("#ass").hide();
+            account = Cookies.get('id');
+            $("#fff").text(Cookies.get('name') + '的通行码');
+            $("#bks").text(Cookies.get('status'));
+
+            var dt = 21 * 24 * 60 * 60000;
+            var t = Date.now();
+            var t1 = new Date(t - dt * 4);
+            var t2 = new Date(t + dt);
+            $("#yxq").text(`有效期：${ttt(t1)} - ${ttt(t2)}`);
+            // $("#yxq").html(`244444`);
+        }
+        $("#jjj").click(function () {
+            Cookies.set('name', '');
+            console.log(document.cookie);
+            location.reload();
+        });
+        $("#go").click(function () {
+            Cookies.set('name', $("#name").val());
+            Cookies.set('id', $("#id").val());
+            Cookies.set('status', $("#status").val());
+            location.reload();
+        });
+
+        var colour = '1E90FF';
+        var flag = '';
+        if (null == colour || "" == colour) {
+            colour = "CCCCCC";
+        }
+
+
+        var mzt = '';
+        var dateTime = '';
+        var array = getJkm();
+        if (array.length > 0) {
+            mzt = array[0].mzt;
+            dateTime = array[0].dateTime;
+        }
+        console.log(dateTime);
+        if (mzt != 'green') {
+            colour = "CCCCCC";
+        }
+        if (mzt == 'green') {
+            $("#hzjkm").append('<div  class="hz" style="color: #55b957">健康码为 绿码</div>');
+        }
+        if (mzt == 'yellow') {
+            $("#hzjkm").append('<div  class="hz" style="color: #ee8232">健康码为 黄码</div>');
+        }
+        if (mzt == 'red') {
+            $("#hzjkm").append('<div class="hz" style="color: #e8453b">健康码为 红码</div>');
+        }
+
+        if (mzt == 'orange') {
+            $("#hzjkm").append('<div class="hz" style="color: #FFA500">健康码为 橙码</div>');
+        }
+        if (mzt == '') {
+            colour = "1E90FF";
+            $("#hzjkm").append('<div class="hz" style="color: #006bc7">健康码获取失败（请打开支付宝出示）</div>');
+        }
+        if (mzt == '' && flag == 'Invalid') {
+            colour = "CCCCCC";
+        }
+        if (dateTime != '') {
+            $("#dateTime").append('<div class="time">同步时间：' + dateTime + '</div>');
+        }
+
+        // 已删除
+        if ('' == '1') {
+            colour = 'CCCCCC';
+        }
+        // 核酸检测为是
+        if ('否' == '是') {
+            colour = 'EB6E18';
+        }
+
+        jQuery('#output').qrcode({
+            render: "table",
+            width: 180,
+            height: 180,
+            text: 'jT6tmuodGqJ8BxagWnLHpUpfn/BmG0ZohthESaBFEGhUpy58wP4qEkkQTL2B+7AgbiMY+8pTej0=',
+            render: "canvas", //也可以替换为table
+            foreground: "#" + colour,
+            background: "#FFF",
+
+        });
+    })
+
+    function ttt(nowtime, fuck = false) {
+        year = nowtime.getFullYear();//年
+        month = nowtime.getMonth() + 1;//月
+        day = nowtime.getDate();//日
+        hour = nowtime.getHours();//时
+        minutes = nowtime.getMinutes(); //分
+        seconds = nowtime.getSeconds(); //秒
+        ret = `${year}-${p(month)}-${p(day)}`;
+        if (fuck) {
+            ret += ` ${p(hour)}:${p(minutes)}:${p(seconds)}`
+        }
+        return ret;
+    }
+
+    //月日时分秒小于10补0
+    function p(s) {
+        return s < 10 ? '0' + s : s;
+    }
+
+    function getJkm() {
+        var t = new Date();
+        return [{ "mzt": "green", "dateTime": ttt(t, true) }]
+    }
+
+
+
+
+    if (true) {
+        //获取系统时间
+        function showTime() {
+            nowtime = new Date();
+            year = nowtime.getFullYear();//年
+            month = nowtime.getMonth() + 1;//月
+            day = nowtime.getDate();//日
+            hour = nowtime.getHours();//时
+            minutes = nowtime.getMinutes(); //分
+            seconds = nowtime.getSeconds(); //秒
+            //文字增加空格
+            document.getElementById("div_timer").style = "white-space:pre;";
+            //显示时间
+            document.getElementById("div_timer").innerText = p(month) + "月" + p(day) + "日 " + p(hour) + ":" + p(minutes) + ":" + p(seconds);
+        }
+
+        setInterval("showTime()", 1000);
+    }
+
+</script>
+<style>
+    hcfy-result.__hcfy__result__loaded__.__hcfy__result__both__ {
+        border: 1px dotted
+    }
+</style>
+</head>
+
+
+
+
+
+
+
+
+
+
+<body class="blue-bg">
+    <div id="ass" style="margin-top: 60%;">
+        <label for="name">姓名</label>
+        <input type="text" id="name" placeholder="姓名"><br>
+        <label for="id">学号</label>
+        <input type="text" id="id" placeholder="学号"><br>
+        <label for="status">身份</label>
+        <input type="text" id="status" placeholder="身份" value="本科生"><br>
+        <button id="go">GO</button>
+    </div>
+    <div id="fucker">
+        <div class="banner"><img src="text.png"></div>
+
+
+
+
+        <div class="content-box">
+            <div class="top-title">
+                <h3 id="fff"></h3>
+
+
+                <span class="bgr-blue" id='bks'>本科生</span>
+
+
+
+
+
+            </div>
+
+            <strong>
+                <div class="time2" id="div_timer" style="white-space: pre;"></div>
+            </strong>
+
+            <div class="qr">
+
+                <div id="output" style="margin-top: 10px;margin-bottom: 10px"></div>
+
+
+
+
+
+
+            </div>
+
+
+            <div class="time" id="yxq">有效期：2021-08-21 - 2021-11-30</div>
+
+
+
+
+
+            <div id="hzjkm"></div>
+
+            <div style="text-align: center;"><button
+                    style="background: rgb(91,145,201);border: 0px;height: 30px;width: 200px;border-radius: 5px;"><a
+                        style="text-decoration: none" href="https://passcode.zju.edu.cn/pass_code/zx/vaccination"
+                        target="_blank"><span style="color: white;">查询新冠疫苗接种记录</span></a></button></div>
+
+
+            <div id="dateTime"></div>
+
+
+
+
+
+
+
+            <p class="tip" style="margin-top: 10px;">凭蓝码可在浙江大学校园内通行<br>请主动出示，配合检查</p>
+
+
+
+
+
+            <div style="text-align:center; margin-top: 10px">
+                <a target="_blank" href="https://passcode.zju.edu.cn/pass_code/zsq">申请流程</a>&nbsp;&nbsp;&nbsp;
+                <a target="_blank" href="https://passcode.zju.edu.cn/pass_code/zx/getList">申请记录</a>
+            </div>
+        </div>
+        <div class="bottom-tip">
+            <h3>安 保 处 ：0571-88206110</h3>
+            <a href="http://xwfw.zju.edu.cn/mobile/redir.php?catalog_id=371039" target="_blank"
+                class="link-btn">常见问题</a>
+            <h3 id="jjj">技术支持：0571-87951669</h3>
+        </div>
+    </div>
+
+</body>
+<div style="all: initial;">
+    <div id="__hcfy__" style="all: initial;"></div>
+</div>
+
+</html>
