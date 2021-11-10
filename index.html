@@ -11,7 +11,7 @@
 <script>
     jQuery(function () {
         var account = '000';
-        if (Cookies.get('name') == '') {
+        if (!Cookies.get('name')) {
             $("#fucker").hide();
         }
         else {
