@@ -42,12 +42,12 @@ html, body {
 }
 
 .blue-bg {
-    background: url(blue-bg.png) no-repeat left top;
+    background: url(../images/blue-bg.png) no-repeat left top;
     background-size: 100% auto;
 }
 
 .orange-bg {
-    background: url(orange-bg.png) no-repeat left top;
+    background: url(../images/orange-bg.png) no-repeat left top;
     background-size: 100% auto;
 }
 
@@ -74,7 +74,7 @@ html, body {
 
 .content-box {
     width: 90%;
-    height: 510px;
+    height: 600px;
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     background: #fff;
@@ -118,8 +118,8 @@ html, body {
     /*width:90%;*/
     margin: 5px;
     text-align: center;
-    line-height: 24px;
-    font-size: 1.3rem;
+    line-height: 48px;
+    font-size: 3rem;
     color: black;
     /*font-weight: bold;*/
 }
@@ -147,6 +147,10 @@ html, body {
 .bottom-tip {
     width: 80%;
     margin: 30px auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .bottom-tip h3 {
@@ -174,7 +178,6 @@ html, body {
 .bgr-blue {
     background: #028aff;
     font-size: 18px;
-    border-radius: 20%;
     padding: 3px;
     color: white;
 }
