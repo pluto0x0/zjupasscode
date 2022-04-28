@@ -142,7 +142,7 @@
             //文字增加空格
             document.getElementById("div_timer").style = "white-space:pre;";
             //显示时间
-            document.getElementById("div_timer").innerText = p(month) + "月" + p(day) + "日 " + p(hour) + ":" + p(minutes) + ":" + p(seconds);
+            document.getElementById("div_timer").innerHTML = p(month) + "月" + p(day) + "日" + '</br>' + p(hour) + ":" + p(minutes) + ":" + p(seconds);
         }
 
         setInterval("showTime()", 1000);
