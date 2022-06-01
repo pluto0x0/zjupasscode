@@ -20,11 +20,14 @@
             $("#fff").text(Cookies.get('name') + '的通行码');
             $("#bks").text(Cookies.get('status'));
 
-            var dt = 21 * 24 * 60 * 60000;
-            var t = Date.now();
-            var t1 = new Date(t - dt * 4);
-            var t2 = new Date(t + dt);
-            $("#yxq").text(`有效期：${ttt(t1)} - ${ttt(t2)}`);
+            var duration = 21 * 24 * 60 * 60000;
+            var time = Date.now();
+            var begin_time = new Date(time - duration * 4);
+            var end_time = new Date(time + duration);
+            var hesuan_diff = 3600000 * 24 * 2;
+            var hesuan_time = new Date(time - hesuan_diff);
+            $("#yxq").text(`有效期：${ttt(begin_time)} - ${ttt(end_time)}`);
+            $("#hesuan").text(`${hesuan_time.getFullYear()}年${hesuan_time.getMonth() + 1}月${hesuan_time.getDate()}日 16:02`);
             // $("#yxq").html(`244444`);
         }
         $("#jjj").click(function () {
@@ -166,15 +169,19 @@
 
 
 <body class="blue-bg">
-    <div id="ass" style="margin-top: 60%;">
+    <div id="ass" style="margin-top: 60%; margin-left: 1cm;">
         <label for="name">姓名</label>
         <input type="text" id="name" placeholder="姓名"><br>
-        <label for="id">学号</label>
-        <input type="text" id="id" placeholder="学号"><br>
+        <!-- <label for="id">学号</label> -->
+        <!-- <input type="text" id="id" placeholder="学号"><br> -->
         <label for="status">身份</label>
         <input type="text" id="status" placeholder="身份" value="本科生"><br>
-        <strong>点击“查询新冠疫苗接种记录”返回此页面</strong>
-        <button id="go">GO</button>
+        <div>
+            <strong>点击</strong>
+            <span style="font-size: 1.1rem; color: #028aff;">常见问题</span>
+            <strong>返回此页面</strong>
+        </div>
+        <button id="go">确定</button>
     </div>
     <div id="fucker">
         <div class="banner"><img src="text.png"></div>
@@ -212,19 +219,49 @@
 
 
             <div class="time" id="yxq">有效期：2021-08-21 - 2021-11-30</div>
+            <!-- @ 0602 -->
+            <div id="ym">
+                <div id="ymContent" class="hz" style="color: #da9414">已接种3针新冠疫苗</div>
+            </div>
+
+            <div id="hs"
+                style="text-align: center;align-items: center;display: flex;justify-content:center;align-items:center;">
+
+                <lb id="lb_hs"> <button
+                        style="background: #837c7a;border: 0px;height: 80px;width: 120px;border-radius: 5px;margin: 5px;"><span
+                            style="color: white;">最近核酸结果</span><br>
+                        <span style="color: white;" id="hesuan">2022年05月27日 18:01</span><br>
+                        <span style="color: white;">阴性</span></button></lb>
+                <lb id="lb_jkm"> <button
+                        style="background: #55b957;border: 0px;height: 80px;width: 120px;border-radius: 5px;margin: 5px;">
+                        <span style="color: white;">健康码</span><br>
+                        <span style="color: white;font-size:25px">绿码</span></button></lb>
+
+            </div>
+
+
+
+            <div style="text-align: center;">
+                <button style="background: rgb(91,145,201);border: 0px;height: 30px;width: 250px;border-radius: 5px;"><a
+                        style="text-decoration: none" href="https://ur.alipay.com/43EwUEYDXm7MjnONin4OpB"
+                        target="_blank"><span style="color: white;">行程卡:14天是否到过中高风险地区</span></a>
+                </button>
+            </div>
+            <!-- @ 0602 -->
 
 
 
 
 
-            <div id="hzjkm"></div>
+            <!-- <div id="hzjkm"></div>
 
             <div style="text-align: center;"><button
                     style="background: rgb(91,145,201);border: 0px;height: 30px;width: 200px;border-radius: 5px;"><a
-                        style="text-decoration: none" id="jjj"><span style="color: white;">查询新冠疫苗接种记录</span></a></button></div>
+                        style="text-decoration: none" id="jjj"><span
+                            style="color: white;">查询新冠疫苗接种记录</span></a></button></div>
 
 
-            <div id="dateTime"></div>
+            <div id="dateTime"></div> -->
 
 
 
@@ -245,8 +282,8 @@
         </div>
         <div class="bottom-tip">
             <h3>安 保 处 ：0571-88206110</h3>
-            <a href="http://xwfw.zju.edu.cn/mobile/redir.php?catalog_id=371039" target="_blank"
-                class="link-btn">常见问题</a>
+            <!-- <a href="http://xwfw.zju.edu.cn/mobile/redir.php?catalog_id=371039" target="_blank" class="link-btn">常见问题</a> -->
+            <span class="link-btn" id="jjj">常见问题</span>
             <h3>技术支持：0571-87951669</h3>
         </div>
     </div>
