@@ -3,7 +3,7 @@ body {
     background-color: #fff;
     padding: 0;
     margin: 0;
-    font-family: "Microsoft YaHei";
+    font-family: "Microsoft YaHei", "黑体";
 }
 
 input:-moz-placeholder, textarea:-moz-placeholder {
