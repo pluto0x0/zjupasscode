@@ -32,7 +32,7 @@
             var hesuan_time = new Date(time - oneDay);
             $("#hs_txt").text(`${p(hesuan_time.getMonth() + 1)}-${p(hesuan_time.getDate())} 16:02`);
             var daka_time = new Date(time);
-            $("#dk_txt").text(`最近打卡时间：${p(daka_time.getMonth() + 1)}-${p(hesuan_time.getDate())} 00:06`);
+            $("#dk_txt").text(`最近打卡时间：${p(daka_time.getMonth() + 1)}-${p(daka_time.getDate())} 00:06`);
         }
         $("#jjj").click(function () {
             Cookies.set('name', '');
